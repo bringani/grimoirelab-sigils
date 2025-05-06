@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-# Copyright (C) 2017 Bitergia
+# Copyright (C) 2015-2019 Bitergia
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,8 +14,7 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 # Authors:
 #     Jesus M. Gonzalez-Barahona <jgb@bitergia.com>
@@ -33,18 +32,9 @@ here = os.path.abspath(os.path.dirname(__file__))
 readme_md = os.path.join(here, 'README.md')
 version_py = os.path.join(here, 'panels', '_version.py')
 
-# Pypi wants the description to be in reStrcuturedText, but
-# we have it in Markdown. So, let's convert formats.
-# Set up thinkgs so that if pypandoc is not installed, it
-# just issues a warning.
-try:
-    import pypandoc
-    long_description = pypandoc.convert(readme_md, 'rst')
-except (IOError, ImportError):
-    print("Warning: pypandoc module not found, or pandoc not installed. " \
-            + "Using md instead of rst", file=sys.stderr)
-    with codecs.open(readme_md, encoding='utf-8') as f:
-        long_description = f.read()
+# Get the package description from the README.md file
+with codecs.open(readme_md, encoding='utf-8') as f:
+    long_description = f.read()
 
 with codecs.open(version_py, 'r', encoding='utf-8') as fd:
     version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
@@ -53,6 +43,7 @@ with codecs.open(version_py, 'r', encoding='utf-8') as fd:
 setup(name="grimoirelab-panels",
       description="Panels and visualizations for GrimoireLab dashboards",
       long_description=long_description,
+      long_description_content_type='text/markdown',
       url="https://github.com/grimoirelab/panels",
       version=version,
       author="Bitergia",
