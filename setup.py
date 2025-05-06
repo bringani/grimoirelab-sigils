@@ -60,6 +60,9 @@ setup(name="grimoirelab-panels",
       packages=['panels', 'panels.json'],
       package_data={'panels.json' : ['*.json']},
       scripts=[],
-      install_requires=[],
+      install_requires=[
+          'requests==2.19.0',
+          'Django==1.11.0'
+      ],
       zip_safe=False
     )
