@@ -60,6 +60,9 @@ setup(name="grimoirelab-panels",
       packages=['panels', 'panels.json'],
       package_data={'panels.json' : ['*.json']},
       scripts=[],
-      install_requires=[],
+      install_requires=[
+          'PyYAML==3.13',
+          'simplejson==1.0'
+      ],
       zip_safe=False
     )
