@@ -62,7 +62,9 @@ setup(name="grimoirelab-panels",
       scripts=[],
       install_requires=[
           'requests==2.19.0',
-          'Django==1.11.0'
+          'Django==1.11.0',
+          'django-agnocomplete==1.3',
+          'uncurl==0.2.0'
       ],
       zip_safe=False
     )
